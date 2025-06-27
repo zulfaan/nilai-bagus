@@ -5,7 +5,11 @@ const FAQItem = ({ faq }) => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <div className="border-2 border-black rounded-xl overflow-hidden mb-4 bg-white">
+    <div
+    className={`border-2 border-black rounded-xl overflow-hidden mb-4 bg-white transition-all duration-300 ${
+    isOpen ? 'min-h-fit' : 'min-h-[100px]'
+  }`}
+  >
       <div 
         className="p-5 cursor-pointer flex justify-between items-center hover:bg-gray-50"
         onClick={() => setIsOpen(!isOpen)}
@@ -74,9 +78,11 @@ const FAQ = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="flex flex-wrap gap-6 justify-center max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
-            <FAQItem key={index} faq={faq} />
+            <div key={index} className="w-full md:w-[calc(50%-12px)]">
+              <FAQItem faq={faq} />
+            </div>
           ))}
         </div>
       </div>
