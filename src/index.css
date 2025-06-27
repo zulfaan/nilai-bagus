@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+:root {
+  --washgreen-100: #F5FDCA;
+  --washgreen-200: #E9FB96;
+  --washgreen-300: #D6F461;
+  --washgreen-400: #C1EA3A;
+  --washgreen-500: #a4dd00;
+  --washgreen-600: #87BE00;
+  --washgreen-700: #6D9F00;
+  --washgreen-800: #548000;
+  --washgreen-900: #436A00;
+  
+  --washpink-100: #FED5D7;
+  --washpink-200: #FEACB8;
+  --washpink-300: #FE83A1;
+  --washpink-400: #FD6499;
+  --washpink-500: #fc318c;
+  --washpink-600: #D82386;
+  --washpink-700: #B5187E;
+  --washpink-800: #920F71;
+  --washpink-900: #780967;
+}
+
+.bg-washgreen-100 { background-color: var(--washgreen-100); }
+.bg-washgreen-200 { background-color: var(--washgreen-200); }
+/* Tambahkan semua kelas warna yang diperlukan */
