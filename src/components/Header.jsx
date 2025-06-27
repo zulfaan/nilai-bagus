@@ -18,6 +18,10 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const menuItems = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
@@ -48,13 +52,13 @@ const Header = () => {
               Nilai Bagus
             </Link>
             
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-6">
+            {/* Desktop Menu - Tablet spacing */}
+            <div className="hidden md:flex md:space-x-2 lg:space-x-6 items-center">
               {menuItems.map((item, index) => (
                 <Link 
                   key={index}
                   to={item.path} 
-                  className={`font-bold transition-all duration-200 hover:text-washpink-500 px-3 py-1 ${
+                  className={`font-bold transition-all duration-200 hover:text-washpink-500 px-2 py-1 text-sm lg:text-base lg:px-3 ${
                     item.highlight 
                       ? 'bg-washpink-500 text-white border-2 border-black shadow-neo' 
                       : 'text-gray-900 hover:border-b-4 hover:border-washgreen-500'
@@ -65,40 +69,71 @@ const Header = () => {
               ))}
             </div>
             
-            {/* Mobile Hamburger Menu */}
+            {/* Mobile Hamburger Menu - Tampil di bawah 768px */}
             <button 
-              className="md:hidden text-gray-900 border-2 border-black p-2 shadow-neo"
+              className="md:hidden text-gray-900 border-2 border-black p-2 shadow-neo bg-white"
               onClick={toggleMenu}
+              aria-label="Toggle menu"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
-          
-          {/* Mobile Menu (show when isMenuOpen is true) */}
-          {isMenuOpen && (
-            <div className="md:hidden py-4 border-t-2 border-black bg-white">
-              <div className="flex flex-col space-y-3">
-                {menuItems.map((item, index) => (
-                  <Link 
-                    key={index}
-                    to={item.path} 
-                    className={`font-bold text-center py-2 px-4 transition-colors ${
-                      item.highlight 
-                        ? 'bg-washpink-500 text-white border-2 border-black shadow-neo' 
-                        : 'text-gray-900 border-2 border-black'
-                    }`}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </nav>
+
+      {/* Mobile Side Panel - Muncul saat hamburger diklik */}
+      <div 
+        className={`fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        } md:hidden`}
+      >
+        {/* Overlay untuk menutup menu */}
+        <div 
+          className="absolute inset-0 bg-black bg-opacity-50"
+          onClick={closeMenu}
+        ></div>
+        
+        {/* Panel Menu */}
+        <div className="absolute right-0 top-0 h-full w-4/5 max-w-xs bg-white border-l-4 border-black shadow-neo flex flex-col">
+          <div className="flex justify-between items-center p-4 border-b-4 border-black bg-white">
+            <Link 
+              to="/" 
+              className="text-washgreen-700 font-bold text-2xl"
+              onClick={closeMenu}
+            >
+              Nilai Bagus
+            </Link>
+            <button 
+              className="text-gray-900 border-2 border-black p-1 shadow-neo bg-white"
+              onClick={closeMenu}
+              aria-label="Close menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <div className="flex flex-col p-4 space-y-3 mt-4 overflow-y-auto">
+            {menuItems.map((item, index) => (
+              <Link 
+                key={index}
+                to={item.path} 
+                className={`font-bold text-left py-3 px-4 transition-colors ${
+                  item.highlight 
+                    ? 'bg-washpink-500 text-white border-2 border-black shadow-neo' 
+                    : 'text-gray-900 border-2 border-black'
+                }`}
+                onClick={closeMenu}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </header>
   );
 };

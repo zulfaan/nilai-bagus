@@ -5,22 +5,18 @@ const FAQItem = ({ faq }) => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <div className="border-2 border-black rounded-xl overflow-hidden mb-4 transition-all duration-300">
+    <div className="border-2 border-black rounded-xl overflow-hidden mb-4 bg-white">
       <div 
-        className="p-5 bg-white cursor-pointer flex justify-between items-center hover:bg-gray-50"
+        className="p-5 cursor-pointer flex justify-between items-center hover:bg-gray-50"
         onClick={() => setIsOpen(!isOpen)}
       >
         <h3 className="font-bold text-lg">{faq.question}</h3>
-        <span className={`text-xl font-bold transform transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+        <span className={`text-xl font-bold transition-transform ${isOpen ? 'rotate-180' : ''}`}>
           ▼
         </span>
       </div>
       
-      <div 
-        className={`overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-96' : 'max-h-0'
-        }`}
-      >
+      <div className={`transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0 overflow-hidden'}`}>
         <div className="p-5 bg-gray-50 border-t-2 border-black">
           <p className="text-gray-700">{faq.answer}</p>
         </div>
