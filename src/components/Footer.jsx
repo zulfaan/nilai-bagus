@@ -1,8 +1,9 @@
+// src/components/Footer.jsx
 import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-washgreen-800 text-white py-16">
+    <footer className="bg-washgreen-800 text-white py-16 border-t-4 border-black">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Left Column */}

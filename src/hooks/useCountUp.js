@@ -1,3 +1,4 @@
+// src/hooks/useCountUp.js
 import { useState, useEffect } from 'react';
 
 const useCountUp = (target, duration) => {

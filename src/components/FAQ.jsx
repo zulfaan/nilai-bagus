@@ -1,4 +1,33 @@
+// src/components/FAQ.jsx
 import React, { useState } from 'react';
+
+const FAQItem = ({ faq }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div className="border-2 border-black rounded-xl overflow-hidden mb-4 transition-all duration-300">
+      <div 
+        className="p-5 bg-white cursor-pointer flex justify-between items-center hover:bg-gray-50"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <h3 className="font-bold text-lg">{faq.question}</h3>
+        <span className={`text-xl font-bold transform transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+          ▼
+        </span>
+      </div>
+      
+      <div 
+        className={`overflow-hidden transition-all duration-300 ${
+          isOpen ? 'max-h-96' : 'max-h-0'
+        }`}
+      >
+        <div className="p-5 bg-gray-50 border-t-2 border-black">
+          <p className="text-gray-700">{faq.answer}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const FAQ = () => {
   const faqs = [
@@ -37,10 +66,10 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white border-b-4 border-black">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block bg-washgreen-100 text-washgreen-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block bg-washgreen-100 text-washgreen-700 px-4 py-2 rounded-full text-sm font-bold mb-4 border-2 border-black">
             Pertanyaan yang Sering Diajukan
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
@@ -56,30 +85,6 @@ const FAQ = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-const FAQItem = ({ faq }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  return (
-    <div className="border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300">
-      <div 
-        className="p-5 bg-gray-50 cursor-pointer flex justify-between items-center hover:bg-gray-100"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <h3 className="font-semibold text-lg">{faq.question}</h3>
-        <span className="text-washpink-500 text-xl font-bold">{isOpen ? '−' : '+'}</span>
-      </div>
-      
-      <div 
-        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}
-      >
-        <div className="p-5 bg-white">
-          <p className="text-gray-600">{faq.answer}</p>
-        </div>
-      </div>
-    </div>
   );
 };
 

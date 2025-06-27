@@ -1,4 +1,6 @@
+// src/components/Benefits.jsx
 import React from 'react';
+import { images } from '../data/images';
 
 const Benefits = () => {
   const benefits = [
@@ -35,10 +37,10 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white border-b-4 border-black">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block bg-washgreen-100 text-washgreen-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block bg-washgreen-100 text-washgreen-700 px-4 py-2 rounded-full text-sm font-bold mb-4 border-2 border-black">
             Children deserve bright future
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Benefits</h2>
@@ -51,7 +53,7 @@ const Benefits = () => {
           {benefits.map((benefit, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:border-washgreen-300 transform hover:-translate-y-1"
+              className="bg-white rounded-2xl shadow-neo p-6 border-2 border-black hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="text-4xl mb-4">{benefit.icon}</div>
               <h3 className="text-xl font-bold mb-2 text-washgreen-700">{benefit.title}</h3>

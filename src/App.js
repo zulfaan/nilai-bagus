@@ -1,28 +1,46 @@
+// src/App.js
 import React from 'react';
-import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import Benefits from './components/Benefits.jsx';
-import Testimonials from './components/Testimonials.jsx';
-import FAQ from './components/FAQ.jsx';
-import Explore from './components/Explore.jsx';
-import Footer from './components/Footer.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Benefits from './components/Benefits';
+import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
+import Explore from './components/Explore';
+import Footer from './components/Footer';
 
-// Tambahkan ini di akhir file
+// Halaman sementara
+const About = () => <div className="min-h-screen flex items-center justify-center text-4xl font-bold">About Us Page</div>;
+const Academics = () => <div className="min-h-screen flex items-center justify-center text-4xl font-bold">Academics Page</div>;
+const Admissions = () => <div className="min-h-screen flex items-center justify-center text-4xl font-bold">Admissions Page</div>;
+const StudentLife = () => <div className="min-h-screen flex items-center justify-center text-4xl font-bold">Student Life Page</div>;
+const Contact = () => <div className="min-h-screen flex items-center justify-center text-4xl font-bold">Contact Page</div>;
+
 function App() {
   return (
-    <div className="font-plus-jakarta">
-      <Header />
-      <main>
-        <Hero />
-        <Benefits />
-        <Testimonials />
-        <FAQ />
-        <Explore />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="font-plus-jakarta">
+        <Header />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Hero />
+              <Benefits />
+              <Testimonials />
+              <FAQ />
+              <Explore />
+            </>
+          } />
+          <Route path="/about" element={<About />} />
+          <Route path="/academics" element={<Academics />} />
+          <Route path="/admissions" element={<Admissions />} />
+          <Route path="/student-life" element={<StudentLife />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
-// Pastikan ada export default
-export default App; // <-- INI HARUS ADA
+export default App;

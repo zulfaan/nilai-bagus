@@ -1,4 +1,6 @@
+// src/components/Testimonials.jsx
 import React, { useState } from 'react';
+import { images } from '../data/images';
 
 const Testimonials = () => {
   const testimonials = [
@@ -8,7 +10,7 @@ const Testimonials = () => {
       role: "Parent of Student",
       rating: 5,
       content: "Anak saya berkembang pesat sejak bergabung dengan Nilai Bagus. Metode pengajarannya sangat menyenangkan!",
-      image: "avatar1"
+      image: images.testimonials[0]
     },
     {
       id: 2,
@@ -16,7 +18,7 @@ const Testimonials = () => {
       role: "Parent of Student",
       rating: 5,
       content: "Guru-guru sangat perhatian dan komunikasi dengan orang tua sangat baik. Sangat direkomendasikan!",
-      image: "avatar2"
+      image: images.testimonials[1]
     },
     {
       id: 3,
@@ -24,7 +26,7 @@ const Testimonials = () => {
       role: "Parent of Student",
       rating: 5,
       content: "Fasilitas lengkap dan programnya beragam. Anak saya jadi lebih percaya diri dan mandiri.",
-      image: "avatar3"
+      image: images.testimonials[2]
     },
     {
       id: 4,
@@ -32,7 +34,7 @@ const Testimonials = () => {
       role: "Parent of Student",
       rating: 5,
       content: "Saya melihat perubahan positif pada anak saya dalam hal sosialisasi dan akademik.",
-      image: "avatar4"
+      image: images.testimonials[3]
     },
     {
       id: 5,
@@ -40,7 +42,7 @@ const Testimonials = () => {
       role: "Parent of Student",
       rating: 5,
       content: "Pendekatan individual membuat anak saya yang pemalu menjadi lebih terbuka dan aktif.",
-      image: "avatar5"
+      image: images.testimonials[4]
     },
     {
       id: 6,
@@ -48,7 +50,7 @@ const Testimonials = () => {
       role: "Parent of Student",
       rating: 5,
       content: "Program ekstrakurikuler yang beragam membantu anak saya menemukan bakatnya.",
-      image: "avatar6"
+      image: images.testimonials[5]
     }
   ];
 
@@ -67,10 +69,10 @@ const Testimonials = () => {
   };
   
   return (
-    <section className="py-20 bg-washpink-100">
+    <section className="py-20 bg-washpink-100 border-b-4 border-black">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-block bg-washpink-200 text-washpink-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block bg-washpink-200 text-washpink-800 px-4 py-2 rounded-full text-sm font-bold mb-4 border-2 border-black">
             Their happy words
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Testimonials</h2>
@@ -83,9 +85,13 @@ const Testimonials = () => {
           <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="w-full md:w-1/3 flex-shrink-0 p-4">
-                <div className="bg-white rounded-2xl shadow-lg p-6 h-full">
+                <div className="bg-white rounded-2xl shadow-neo p-6 h-full border-2 border-black">
                   <div className="flex items-center mb-4">
-                    <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+                    <img 
+                      src={testimonial.image} 
+                      alt={testimonial.name} 
+                      className="w-16 h-16 rounded-full border-2 border-black"
+                    />
                     <div className="ml-4">
                       <h3 className="font-bold">{testimonial.name}</h3>
                       <p className="text-sm text-gray-600">{testimonial.role}</p>
@@ -105,7 +111,7 @@ const Testimonials = () => {
           </div>
           
           <button 
-            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors"
+            className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-neo hover:bg-gray-100 transition-colors border-2 border-black"
             onClick={prevSlide}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -113,7 +119,7 @@ const Testimonials = () => {
             </svg>
           </button>
           <button 
-            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-colors"
+            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-neo hover:bg-gray-100 transition-colors border-2 border-black"
             onClick={nextSlide}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

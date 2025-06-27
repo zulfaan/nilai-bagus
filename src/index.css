@@ -4,14 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
 :root {
+  /* Washgreen Palette */
   --washgreen-100: #F5FDCA;
   --washgreen-200: #E9FB96;
   --washgreen-300: #D6F461;
@@ -22,6 +16,7 @@ body {
   --washgreen-800: #548000;
   --washgreen-900: #436A00;
   
+  /* Washpink Palette */
   --washpink-100: #FED5D7;
   --washpink-200: #FEACB8;
   --washpink-300: #FE83A1;
@@ -31,8 +26,61 @@ body {
   --washpink-700: #B5187E;
   --washpink-800: #920F71;
   --washpink-900: #780967;
+
+  /* Neobrutalism Styles */
+  --shadow-neo: 8px 8px 0px rgba(0, 0, 0, 0.9);
 }
 
+/* Utility Classes */
 .bg-washgreen-100 { background-color: var(--washgreen-100); }
-.bg-washgreen-200 { background-color: var(--washgreen-200); }
-/* Tambahkan semua kelas warna yang diperlukan */
+.bg-washgreen-500 { background-color: var(--washgreen-500); }
+.bg-washpink-100 { background-color: var(--washpink-100); }
+.bg-washpink-500 { background-color: var(--washpink-500); }
+
+.text-washgreen-700 { color: var(--washgreen-700); }
+.text-washpink-500 { color: var(--washpink-500); }
+
+.shadow-neo {
+  box-shadow: var(--shadow-neo) !important;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #fafafa;
+}
+
+/* Animasi */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.floating-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Transitions */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .md\:hidden {
+    display: none;
+  }
+  
+  .md\:flex {
+    display: flex;
+  }
+}
