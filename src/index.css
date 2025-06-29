@@ -94,3 +94,41 @@ body {
     display: flex !important;
   }
 }
+/* Animasi untuk Achievement Cards */
+.achievement-card {
+  transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.achievement-icon {
+  transition: all 0.3s ease;
+}
+
+.achievement-card:hover .achievement-icon {
+  transform: rotate(15deg) scale(1.2);
+  background-color: #ffb7c5;
+}
+
+/* Efek hover untuk Mission & Vision Cards */
+.mission-vision-card {
+  transition: all 0.3s ease;
+}
+
+.mission-vision-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* Efek khusus untuk Mission card saat hover */
+.mission-card:hover {
+  background-color: #ffd6e0 !important;
+}
+
+/* Efek khusus untuk Vision card saat hover */
+.vision-card:hover {
+  background-color: #d0f0c0 !important;
+}

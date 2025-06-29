@@ -151,24 +151,25 @@ const About = () => {
     }
   ];
 
-  // State untuk slider achievements (tampilkan 3 sekaligus)
-  const [startIndex, setStartIndex] = useState(0);
+  // State untuk slider achievements
+  const [currentIndex, setCurrentIndex] = useState(0);
   
-  // Fungsi untuk navigasi slider
+  // Fungsi navigasi slider achievements
   const nextSlide = () => {
-    setStartIndex((prevIndex) => 
-      (prevIndex + 3) >= achievements.length ? 0 : prevIndex + 3
+    setCurrentIndex(prev => 
+      prev === achievements.length - 3 ? 0 : prev + 1
     );
   };
   
   const prevSlide = () => {
-    setStartIndex((prevIndex) => 
-      prevIndex - 3 < 0 ? achievements.length - 3 : prevIndex - 3
+    setCurrentIndex(prev => 
+      prev === 0 ? achievements.length - 3 : prev - 1
     );
   };
 
-  // Dapatkan 3 achievements untuk ditampilkan
-  const visibleAchievements = achievements.slice(startIndex, startIndex + 3);
+  // State untuk hover effect di Mission & Vision
+  const [hoveredMission, setHoveredMission] = useState(false);
+  const [hoveredVision, setHoveredVision] = useState(false);
 
   return (
     <div className="bg-white">
@@ -224,7 +225,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Mission & Vision Section */}
+      {/* Mission & Vision Section dengan hover effect */}
       <section className="py-16 bg-gray-50 border-b-4 border-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -238,8 +239,18 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Mission Card */}
-            <div className="border-4 border-black rounded-2xl p-6 bg-white shadow-neo">
+            {/* Mission Card dengan hover effect */}
+            <div 
+              className={`border-4 border-black rounded-2xl p-6 bg-white shadow-neo transition-all duration-300 ${
+                hoveredMission ? 'bg-washpink-100 transform -translate-y-1' : ''
+              }`}
+              onMouseEnter={() => setHoveredMission(true)}
+              onMouseLeave={() => setHoveredMission(false)}
+              style={{
+                boxShadow: hoveredMission ? '0 10px 25px rgba(0,0,0,0.1)' : '',
+                transition: 'all 0.3s ease'
+              }}
+            >
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold">Mission</h3>
                 <div className="w-12 h-12 border-2 border-black rounded-full p-2 bg-washpink-100 flex items-center justify-center">
@@ -251,8 +262,18 @@ const About = () => {
               </p>
             </div>
             
-            {/* Vision Card */}
-            <div className="border-4 border-black rounded-2xl p-6 bg-white shadow-neo">
+            {/* Vision Card dengan hover effect */}
+            <div 
+              className={`border-4 border-black rounded-2xl p-6 bg-white shadow-neo transition-all duration-300 ${
+                hoveredVision ? 'bg-washgreen-100 transform -translate-y-1' : ''
+              }`}
+              onMouseEnter={() => setHoveredVision(true)}
+              onMouseLeave={() => setHoveredVision(false)}
+              style={{
+                boxShadow: hoveredVision ? '0 10px 25px rgba(0,0,0,0.1)' : '',
+                transition: 'all 0.3s ease'
+              }}
+            >
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold">Vision</h3>
                 <div className="w-12 h-12 border-2 border-black rounded-full p-2 bg-washgreen-100 flex items-center justify-center">
@@ -267,7 +288,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Achievements Section - Tampilkan 3 card sekaligus */}
+      {/* Achievements Section dengan animasi slider */}
       <section className="py-16 bg-white border-b-4 border-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -280,48 +301,91 @@ const About = () => {
             </p>
           </div>
           
-          <div className="max-w-6xl mx-auto">
-            {/* Achievement Cards (3 sekaligus) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              {visibleAchievements.map((achievement) => (
-                <div 
-                  key={achievement.id} 
-                  className="border-4 border-black rounded-2xl p-6 bg-gray-50 shadow-neo transition-transform duration-300 hover:scale-[1.02]"
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-10 mr-3 border-2 border-black rounded-full p-1 bg-washpink-100 flex items-center justify-center">
-                      🏆
+          <div className="max-w-6xl mx-auto relative">
+            <div className="relative overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out" 
+                style={{ 
+                  transform: `translateX(-${currentIndex * (100/3)}%)`,
+                  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+              >
+                {achievements.map((achievement) => (
+                  <div key={achievement.id} className="w-1/3 flex-shrink-0 p-4">
+                    <div 
+                      className="border-4 border-black rounded-2xl p-6 bg-gray-50 shadow-neo h-full"
+                      style={{
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-5px)';
+                        e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = '';
+                        e.currentTarget.style.boxShadow = '';
+                      }}
+                    >
+                      <div className="flex items-center mb-4">
+                        <div 
+                          className="w-10 h-10 mr-3 border-2 border-black rounded-full p-1 bg-washpink-100 flex items-center justify-center"
+                          style={{
+                            transition: 'all 0.3s ease'
+                          }}
+                        >
+                          🏆
+                        </div>
+                        <h3 className="text-xl font-bold">{achievement.title}</h3>
+                      </div>
+                      <div className="bg-washpink-100 text-washpink-700 px-3 py-1 rounded-full text-xs font-bold inline-block mb-2 border border-black">
+                        {achievement.year}
+                      </div>
+                      <p className="text-gray-700">{achievement.description}</p>
                     </div>
-                    <h3 className="text-xl font-bold">{achievement.title}</h3>
                   </div>
-                  <div className="bg-washpink-100 text-washpink-700 px-3 py-1 rounded-full text-xs font-bold inline-block mb-2 border border-black">
-                    {achievement.year}
-                  </div>
-                  <p className="text-gray-700">{achievement.description}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
             
-            {/* Navigation */}
-            <div className="flex justify-between items-center">
-              <button 
-                className="border-2 border-black p-2 rounded-lg shadow-neo bg-white hover:bg-gray-100 flex items-center"
-                onClick={prevSlide}
-              >
-                <span className="mr-2">←</span> Prev
-              </button>
-              
-              <div className="text-sm font-bold">
-                {Math.floor(startIndex / 3) + 1} / {Math.ceil(achievements.length / 3)}
-              </div>
-              
-              <button 
-                className="border-2 border-black p-2 rounded-lg shadow-neo bg-white hover:bg-gray-100 flex items-center"
-                onClick={nextSlide}
-              >
-                Next <span className="ml-2">→</span>
-              </button>
-            </div>
+            {/* Navigation Buttons */}
+            <button 
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-neo hover:bg-gray-100 transition-colors border-2 border-black"
+              onClick={prevSlide}
+              style={{
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+            </button>
+            <button 
+              className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-neo hover:bg-gray-100 transition-colors border-2 border-black"
+              onClick={nextSlide}
+              style={{
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Pagination Indicator */}
+          <div className="flex justify-center mt-4">
+            {Array.from({ length: Math.ceil(achievements.length / 3) }).map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full mx-1 ${
+                  index === currentIndex ? 'bg-black' : 'bg-gray-300'
+                }`}
+                onClick={() => setCurrentIndex(index)}
+                style={{
+                  transition: 'background-color 0.3s ease'
+                }}
+              />
+            ))}
           </div>
         </div>
       </section>

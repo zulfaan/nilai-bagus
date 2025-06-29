@@ -14,7 +14,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          {/* Tambahkan rute lainnya di sini */}
+          {/* <Route path="/academics" element={<Academics />} />
+          <Route path="/admissions" element={<Admissions />} />
+          <Route path="/student-life" element={<StudentLife />} />
+          <Route path="/contact" element={<Contact />} /> */}
         </Routes>
         <Footer />
       </div>
