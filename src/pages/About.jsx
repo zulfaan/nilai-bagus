@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TeacherCard from '../components/TeacherCard';
 import { images } from '../data/images';
 
@@ -153,18 +153,45 @@ const About = () => {
 
   // State untuk slider achievements
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(3); // Default 3 slides
   
-  // Fungsi navigasi slider achievements
+  // Fungsi untuk mengatur jumlah slide berdasarkan lebar layar
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setSlidesToShow(1);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+    
+    // Panggil saat pertama kali dimuat
+    handleResize();
+    
+    // Tambahkan event listener untuk resize
+    window.addEventListener('resize', handleResize);
+    
+    // Bersihkan event listener saat komponen di-unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Fungsi navigasi slider
   const nextSlide = () => {
-    setCurrentIndex(prev => 
-      prev === achievements.length - 3 ? 0 : prev + 1
-    );
+    setCurrentIndex(prev => {
+      // Hitung slide maksimum yang bisa ditampilkan
+      const maxIndex = achievements.length - slidesToShow;
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
   };
   
   const prevSlide = () => {
-    setCurrentIndex(prev => 
-      prev === 0 ? achievements.length - 3 : prev - 1
-    );
+    setCurrentIndex(prev => {
+      // Hitung slide maksimum yang bisa ditampilkan
+      const maxIndex = achievements.length - slidesToShow;
+      return prev === 0 ? maxIndex : prev - 1;
+    });
   };
 
   // State untuk hover effect di Mission & Vision
@@ -288,7 +315,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Achievements Section dengan animasi slider */}
+      {/* Achievements Section dengan animasi slider responsif */}
       <section className="py-16 bg-white border-b-4 border-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -306,12 +333,16 @@ const About = () => {
               <div 
                 className="flex transition-transform duration-500 ease-in-out" 
                 style={{ 
-                  transform: `translateX(-${currentIndex * (100/3)}%)`,
+                  transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)`,
                   transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
               >
                 {achievements.map((achievement) => (
-                  <div key={achievement.id} className="w-1/3 flex-shrink-0 p-4">
+                  <div 
+                    key={achievement.id} 
+                    className="flex-shrink-0 p-4"
+                    style={{ width: `${100 / slidesToShow}%` }}
+                  >
                     <div 
                       className="border-4 border-black rounded-2xl p-6 bg-gray-50 shadow-neo h-full"
                       style={{
@@ -374,7 +405,7 @@ const About = () => {
           
           {/* Pagination Indicator */}
           <div className="flex justify-center mt-4">
-            {Array.from({ length: Math.ceil(achievements.length / 3) }).map((_, index) => (
+            {Array.from({ length: achievements.length - slidesToShow + 1 }).map((_, index) => (
               <button
                 key={index}
                 className={`w-3 h-3 rounded-full mx-1 ${
