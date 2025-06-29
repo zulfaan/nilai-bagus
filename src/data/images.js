@@ -20,5 +20,9 @@ export const images = {
   about: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
   academics: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
   studentLife: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-  admissions: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+  admissions: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+  
+  missionIcon: "https://cdn-icons-png.flaticon.com/512/3132/3132693.png",
+  visionIcon: "https://cdn-icons-png.flaticon.com/512/3132/3132693.png",
+  awardIcon: "https://cdn-icons-png.flaticon.com/512/3132/3132693.png"
 };
