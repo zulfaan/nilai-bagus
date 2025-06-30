@@ -17,9 +17,9 @@ const Explore = () => {
       image: images.academics
     },
     {
-      title: "Student Life",
-      description: "Lihat bagaimana kehidupan sehari-hari siswa di lingkungan belajar yang menyenangkan.",
-      link: "/student-life",
+      title: "Programs",
+      description: "Lihat program-program unggulan kami yang mendukung prestasi siswa untuk menggapai impian.",
+      link: "/programs",
       image: images.studentLife
     },
     {

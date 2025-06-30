@@ -26,14 +26,13 @@ const Header = () => {
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Academics', path: '/academics' },
+    { name: 'Programs', path: '/programs' },
     { name: 'Admissions', path: '/admissions' },
-    { name: 'Student Life', path: '/student-life' },
     { name: 'Contact', path: '/contact', highlight: true }
   ];
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-neo' : 'bg-transparent'}`}>
-      {/* Admission Banner Button - Full width */}
       <div className="w-full bg-washgreen-500 py-2 px-4">
         <button 
           className="w-full text-center text-white font-bold flex justify-center items-center space-x-2"
