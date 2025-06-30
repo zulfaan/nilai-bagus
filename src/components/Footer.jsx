@@ -45,7 +45,7 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Other Links</h4>
               <ul className="space-y-2">
-                {['Admissions', 'Student Life', 'FAQs', 'Privacy Policy'].map((item, index) => (
+                {['Admissions', 'Programs', 'FAQs', 'Privacy Policy'].map((item, index) => (
                   <li key={index}>
                     <a href="#" className="hover:text-washpink-300 transition-colors">{item}</a>
                   </li>
