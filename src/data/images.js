@@ -24,5 +24,48 @@ export const images = {
   
   missionIcon: "https://cdn-icons-png.flaticon.com/512/3132/3132693.png",
   visionIcon: "https://cdn-icons-png.flaticon.com/512/3132/3132693.png",
-  awardIcon: "https://cdn-icons-png.flaticon.com/512/3132/3132693.png"
+  awardIcon: "https://cdn-icons-png.flaticon.com/512/3132/3132693.png",
+  
+  // Tambahan untuk Academics Page
+  academicsSubjects: {
+    languageArts: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+    mathematics: "https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+    science: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+    socialStudies: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+    artsAndCrafts: "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+    physicalEducation: "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+  },
+  
+  academicsGallery: {
+    classrooms: [
+      "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    ],
+    library: [
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1495640388908-05fa85288e61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    ],
+    scienceLab: [
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1581093458791-8a4813c7b6cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    ],
+    computerLab: [
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1547082299-de196ea013d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    ],
+    garden: [
+      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1413752362258-7af2a667b590?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      "https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    ]
+  }
 };
