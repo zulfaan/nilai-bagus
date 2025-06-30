@@ -6,18 +6,20 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Academics from './pages/Academics';
 
-// Impor halaman lainnya jika sudah dibuat
-
 function App() {
   return (
     <Router>
-      <div className="font-plus-jakarta">
+      <div className="font-plus-jakarta flex flex-col min-h-screen">
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/academics" element={<Academics />} />
-        </Routes>
+        
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/academics" element={<Academics />} />
+          </Routes>
+        </main>
+        
         <Footer />
       </div>
     </Router>

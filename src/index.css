@@ -132,3 +132,18 @@ body {
 .vision-card:hover {
   background-color: #d0f0c0 !important;
 }
+
+
+.shadow-neo-hover {
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Tambahkan animasi float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
