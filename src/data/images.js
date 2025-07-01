@@ -77,4 +77,5 @@ export const images = {
       "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
     ]
   }
+  
 };
